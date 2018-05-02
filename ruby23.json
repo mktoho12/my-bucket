@@ -1,0 +1,38 @@
+{
+  "homepage": "https://rubyinstaller.org",
+  "version": "2.3.0",
+  "architecture": {
+    "64bit": {
+      "url": [
+        "https://dl.bintray.com/oneclick/rubyinstaller/ruby-2.3.0-x64-mingw32.7z",
+        "https://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe"
+      ],
+      "hash": [
+        "1d63ef1fbc06078c43b596326c4144a0",
+        "ce99d873c1acc8bffc639bd4e764b849"
+      ],
+      "extract_dir": "rubyinstaller-2.3.0-x64"
+    },
+    "32bit": {
+      "url": [
+        "https://dl.bintray.com/oneclick/rubyinstaller/ruby-2.3.0-i386-mingw32.7z",
+        "https://dl.bintray.com/oneclick/rubyinstaller/:DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe"
+      ],
+      "hash": [
+        "95a62cb2ba42f80d9f5a36df07d5886a",
+        "9383f12958aafc425923e322460a84de"
+      ],
+      "extract_dir": "rubyinstaller-2.3.0-i386"
+    }
+  },
+  "extract_to": [
+    "",
+    "devkit"
+  ],
+  "env_add_path": "bin",
+  "post_install": "pushd \"$dir\\devkit\";ruby dk.rb init > $null;echo \"- $dir\" | out-file config.yml -a -enc default; ruby dk.rb install;popd;",
+  "checkver": {
+    "url": "https://bintray.com/package/generalTab?pkgPath=/oneclick/rubyinstaller/rubyinstaller",
+    "re": "rubyinstaller/(2.3[\\d.]+-p[\\d]+)"
+  }
+}
